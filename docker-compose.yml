@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  base:
+    container_name: mabase
+    image: mariadb:latest
+    user: "501:20"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always 
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: symfony_docker
+      MYSQL_USER: symfony 
+      MYSQL_PASSWORD: symfony
+    ports:
+      - '3311:3306'
+    volumes:
+      - ./mysql:/var/lib/mysql
+  
+  php:
+    container_name: php
+    build:
+      context: ./php 
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./app:/var/www/symfo
+    
