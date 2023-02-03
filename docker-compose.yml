@@ -17,7 +17,7 @@ services:
       - '3311:3306'
     volumes:
       - ./mysql:/var/lib/mysql
-  
+
   php:
     container_name: php
     build:
@@ -26,4 +26,19 @@ services:
       - '9000:9000'
     volumes:
       - ./app:/var/www/symfo
-    
+    depends_on:
+      - base 
+  
+  nginx:
+    container_name: nginx
+    image: nginx:stable-alpine
+    ports:
+      - '8081:80'
+    volumes:
+      - ./app:/var/www/symfo
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - base 
+volumes:
+  mysql:
