@@ -2,16 +2,14 @@
 {% block title %} Page de bienvenue {% endblock %}
 
 {% block body %}
-<h2></h2>
-    <ul> 
-        <li>
-        <a href='/page/1'> page 1 </a>
-        </li> 
-        <li>
-        <a href='/page/2'> page 2 </a>
-        </li> 
-        <li>
-        <a href='/page/3'> page 3 </a>
-        </li> 
-    </ul>
+<main class="container">
+<h2>{{titre}}</h2>
+{{include('front/_menu.html.twig',{currentPage: 0})}}
+<div class="row">
+<div class="col-9">
+{{render(path('articles'))}}
+{{render(controller('App\\Controller\\HomeController::listArticles'))}}
+</div>
+</div>
+</main> 
 {% endblock %}

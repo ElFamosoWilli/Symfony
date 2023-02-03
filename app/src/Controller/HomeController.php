@@ -7,13 +7,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    private string $titre = "Bienvenue en symfony";
     #[Route('/home',name: 'accueil',methods: 'GET' )]
     public function bienvenue()
     {
-        $titre = "Bienvenue en symfony";
         return $this->render(
             'front/home.html.twig',[
-                'titre' => $titre,
+                'titre' => $this->titre,
             ]
         );
     }
@@ -23,14 +23,33 @@ class HomeController extends AbstractController
     {
         
         return $this->render(
-            "<html>
-            <head>
-                <title> firstPage </title>
-            </head>
-            <body>
-                <h1>Page n° $numero </h1>
-                </body>
-            </html>"
+            "front/page.html.twig",
+            ['titre' => $this->titre,
+            'numero' => $numero
+             ]
+        );
+    }
+    
+    #[Route("/listArticle",name:'articles', methods: ['GET'])]
+    public function listArticles()
+    {
+        $articles = [
+            ['titre' => 'titre article 1',
+            'resume' => 'Ceci est le résumé de l\'article 1 '
+            ],
+            ['titre' => 'titre article 2',
+            'resume' => 'Ceci est le résumé de l\'article 2 '
+            ],
+            ['titre' => 'titre article 3',
+            'resume' => 'Ceci est le résumé de l\'article 3 '
+            ]
+        ];
+
+        return $this->render(
+            'front/_listArticle.html.twig',
+            [
+                'articles' => $articles
+            ]
         );
     }
 

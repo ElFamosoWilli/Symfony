@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Page n° {{numero}}  {% endblock %}
+
+{% block body %}
+
+    <main class="container">
+    <a href='{{path('accueil')}}' class="btn btn-sn btn-success float-end"> Accueil </a>
+    <div class="row">
+    <div class='col-3'>
+    <!-- Intégration du menu -->
+    {{include('front/_menu.html.twig',{currentPage: numero})}}
+    </div>
+    <div class='col-3'>
+    <h2> {{titre}} pour la page {{numero}} </h2>
+    </div>
+    <div class='col-6'>
+    <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat ut velit eget aliquet. Nam enim neque, lobortis sit amet tempus ac, luctus et felis. Fusce ultrices facilisis erat, sed accumsan velit fermentum a. Donec ultrices, lacus eget interdum vehicula, ante metus varius augue, sed dignissim nibh ex a nulla. Duis consequat, sem nec ornare congue, magna sapien congue dolor, lacinia facilisis est ligula scelerisque neque. Curabitur ligula ligula, eleifend sed finibus sed, venenatis in lectus. Proin dictum, ipsum ac convallis imperdiet, ligula nunc malesuada quam, at finibus magna magna at lorem. Nulla tortor magna, convallis nec volutpat ac, mollis nec nunc. Vestibulum nec purus vel ante posuere facilisis eget porta turpis. Duis sapien libero, fermentum sed elit porttitor, finibus maximus enim. Donec non accumsan nisl. Vestibulum sit amet accumsan erat.
+    </p>
+    </div>
+    <div>
+    </main>
+{% endblock %}
+
+
